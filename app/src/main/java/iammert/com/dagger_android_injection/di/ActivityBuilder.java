@@ -5,19 +5,23 @@ import dagger.android.ContributesAndroidInjector;
 import iammert.com.dagger_android_injection.ui.detail.DetailActivity;
 import iammert.com.dagger_android_injection.ui.detail.DetailActivityModule;
 import iammert.com.dagger_android_injection.ui.detail.DetailFragmentProvider;
+import iammert.com.dagger_android_injection.ui.login.LoginActivity;
+import iammert.com.dagger_android_injection.ui.login.LoginActivityModule;
 import iammert.com.dagger_android_injection.ui.main.MainActivity;
 import iammert.com.dagger_android_injection.ui.main.MainActivityModule;
 
 /**
  * Created by mertsimsek on 25/05/2017.
  */
-@Module
-public abstract class ActivityBuilder {
+@Module public abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector(modules = MainActivityModule.class)
-    abstract MainActivity bindMainActivity();
+  @ContributesAndroidInjector(modules = MainActivityModule.class)
+  abstract MainActivity bindMainActivity();
 
-    @ContributesAndroidInjector(modules = {DetailActivityModule.class, DetailFragmentProvider.class})
-    abstract DetailActivity bindDetailActivity();
+  @ContributesAndroidInjector(modules = {
+      DetailActivityModule.class, DetailFragmentProvider.class
+  }) abstract DetailActivity bindDetailActivity();
 
+  @ContributesAndroidInjector(modules = LoginActivityModule.class)
+  abstract LoginActivity loginActivity();
 }
